@@ -74,7 +74,7 @@ repo: mousedoc.github.io
 branch: master
 relative_source: ../jasper2/
 # destination: ../jasper2-pages/
-# destination: ./build
+destination: ./build
 production_url:  https://mousedoc.github.io
 source_url:  https://github.com/mousedoc/mousedoc.github.io/
 
