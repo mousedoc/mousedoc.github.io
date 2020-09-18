@@ -29,7 +29,7 @@ facebook: ghost # replace by your username
 
 # Disqus
 disqus: True
-disqus_id: sangyun_lee
+disqus_id: mousedoc
 disqus_shortname: https-mousedoc-github-io # replace with your disqus username
 
 # Google Analytics
