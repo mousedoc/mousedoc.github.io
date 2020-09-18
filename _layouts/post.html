@@ -53,13 +53,13 @@ into the {body} of the default.hbs template -->
             </section>
 
             <!-- Email subscribe form at the bottom of the page -->
-            {% if site.subscribers %}
+            <!-- {% if site.subscribers %}
                 <section class="subscribe-form">
                     <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3>
                     <p>Get the latest posts delivered right to your inbox</p>
                     {% include subscribe-form.html placeholder="youremail@example.com" %}
                 </section>
-            {% endif %}
+            {% endif %} -->
 
             <footer class="post-full-footer">
                 <!-- Everything inside the #author tags pulls data from the author -->
@@ -95,9 +95,9 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            this.page.url = '{{ site.url }}{{ site.baseurl }}';
+                            this.page.url = '{{ site.url }}{{ page.url }}';
                             this.page.identifier = '{{ page.id }}';
-                            this.page.title = '{{page .title }}'
+                            this.page.title = '{{ page .title }}'
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
