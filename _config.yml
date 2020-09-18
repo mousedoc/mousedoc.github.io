@@ -29,10 +29,11 @@ facebook: ghost # replace by your username
 
 # Disqus
 disqus: True
-disqus_shortname: jekyller # replace with your disqus username
+disqus_id: sangyun_lee
+disqus_shortname: https-mousedoc-github-io # replace with your disqus username
 
 # Google Analytics
-google_analytics: UA-69281367-1 # replace with your GA tracking identifier
+google_analytics: UA-146500309-1 # replace with your GA tracking identifier
 
 # Permalinks
 permalink: /:title
