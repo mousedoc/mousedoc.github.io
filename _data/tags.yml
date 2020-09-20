@@ -1,16 +1,30 @@
-speeches:
-  name: speeches
-  description: Some of the greatest words ever spoken.
-  cover: assets/images/speeches.jpg
-fiction:
-  name: fiction
-  description: False
-  cover: False
-fables:
-  name: fables
-  description: A series of short stories that make you think.
-  cover: assets/images/fables.jpg
-getting-started:
-  name: getting-started
-  description: False
-  cover: False
+# speeches:
+#   name: speeches
+#   description: Some of the greatest words ever spoken.
+#   cover: assets/images/speeches.jpg
+# fiction:
+#   name: fiction
+#   description: False
+#   cover: False
+# fables:
+#   name: fables
+#   description: A series of short stories that make you think.
+#   cover: assets/images/fables.jpg
+# getting-started:
+#   name: getting-started
+#   description: False
+#   cover: False
+#
+# ---------
+#
+
+
+github:
+  name: Github
+  description: Github와 관련된 것들
+  cover: assets/images-cover/github-cover.jpg
+
+unity:
+  name: Unity
+  description: Unity와 관련된 것들
+  cover: assets/images-cover/unity-cover.jpg

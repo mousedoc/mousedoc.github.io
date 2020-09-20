@@ -1,10 +1,10 @@
 mousedoc:
   username: mousedoc
   name: 이상윤
-  url_full: http://mousedoc.github.io/
-  url: mousedoc.github.io
-  bio: The professional publishing platform
-  picture: assets/images/ghost.png
+  url_full: http://github.com/mousedoc/
+  url: github.com/mousedoc
+  bio: Game client programmer
+  picture: assets/images/profile.jpg
 #  facebook: ghost
 #  twitter: tryghost
   cover: False
