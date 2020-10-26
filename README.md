@@ -1,16 +1,24 @@
 # mousedoc.github.io
 For blog
 
-### Deploy
-When something is pushed to master, it is automatically distributed as a github action.
+---
 
-### Update style
+### Deploy
+When something is pushed to master, it is automatically distributed as a [github action](https://github.com/mousedoc/mousedoc.github.io/blob/master/.github/workflows/jekyll.yml).
+
+### Deploy on local
+```
+bundle exec jekyll serve
+```
+
+### Update style(css)
 ```
 cd mousedoc.github.io
 npm install
 gulp
 ```
 
+---
 
 ### Template
 ```
