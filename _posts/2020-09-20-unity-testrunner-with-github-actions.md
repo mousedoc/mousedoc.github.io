@@ -27,22 +27,6 @@ set up a workflow yourself 를 눌러 기본 workflow를 생성.
 
 ---
 
-
-## collapsible markdown?
-
-<details><summary>CLICK ME</summary>
-<p>
-
-#### yes, even hidden code blocks!
-
-```python
-print("hello world!")
-```
-
-</p>
-</details>
-
-
 ### 2. Unity activation file 생성
 {% highlight language-yml %}
 
