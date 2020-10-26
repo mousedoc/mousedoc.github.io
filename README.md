@@ -4,6 +4,11 @@ For blog
 ### Deploy
 When something is pushed to master, it is automatically distributed as a github action.
 
+### Deploy on local
+```
+bundle exec jekyll serve
+```
+
 ### Update style
 ```
 cd mousedoc.github.io
