@@ -1,9 +1,9 @@
 ---
 layout: post
 current: post
-# cover: assets/images/water.jpg
+cover: assets/images-cover/github-icon-cover.jpg
 navigation: True
-title: Github Action for Unity Test runner
+title: Github Action으로 Unity Test Runner 돌리기
 date: 2014-08-12 10:18:00
 tags: github
 class: post-template
@@ -12,17 +12,17 @@ subclass: 'post tag-github'
 author: mousedoc
 ---
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\006.jpg" alt="drawing" style="width:840px;"/> 
-Software 개발 중, Github Action와 Unity Testrunner를 통한 Code Coverage 방법
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\006.jpg" alt="drawing" style="max-width:840px;"/> 
+Software 개발 중, Github Action과 Unity Testrunner를 통한 Code Coverage 방법
 
 ---
 
 ### 1. Github Action 생성
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\000.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\000.jpg" alt="drawing" style="max-width:840px;"/> 
 본인의 Unity 프로젝트 Repository의 Actinos 탭을 눌러준다.
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\001.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\001.jpg" alt="drawing" style="max-width:840px;"/> 
 set up a workflow yourself 를 눌러 기본 workflow를 생성.
 
 ---
@@ -73,20 +73,20 @@ generate-unity-license.yml 를 생성 후 위의 내용을 붙여넣는다.
 
 ### 2. Unity activation file 업로드
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\002.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\002.jpg" alt="drawing" style="max-width:840px;"/> 
 위와 같이 성공적으로 완료되었으면, 아티팩트를 다운로드 해 *.alf 파일을 [여기에](https://license.unity3d.com/manual) 업로드 해주고
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\003.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\003.jpg" alt="drawing" style="max-width:840px;"/> 
 *.ulf 파일을 다운로드 받으면 된다
 
 ---
 
 ### 3. Secret 생성
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\004.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\004.jpg" alt="drawing" style="max-width:840px;"/> 
 다시 Repository로 돌아와 Settings -> Secrets 의 New secret을 눌러준다
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\005.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\005.jpg" alt="drawing" style="max-width:840px;"/> 
 Name은 'UNITY_LICENSE', Value는 *.ulf 파일을 메모장으로 열어 안의 내용을 복사해 넣어주면 된다.
 
 ---
@@ -163,7 +163,7 @@ jobs:
 {% endhighlight %}
 run-unity-testrunner.yml 를 생성 후 위의 내용을 붙여넣고, 
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\007.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\007.jpg" alt="drawing" style="max-width:840px;"/> 
 Workflow가 잘 실행되는지 확인하면 된다.
 
 ---
@@ -171,7 +171,7 @@ Workflow가 잘 실행되는지 확인하면 된다.
 ### 5. Result Artifacts 확인
 Unity Test Runner가 정상적으로 실행이 되었다면. 아래와 같이 결과를 확인할 수 있다
 
-<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\008.jpg" alt="drawing" style="width:840px;"/> 
+<img src="assets\images-post\2020-09-20-unity-testrunner-with-github-actions\008.jpg" alt="drawing" style="max-width:840px;"/> 
 Artifacts를 다운받아 압축을 풀면 결과가 *.xml 형태로 저장되어 있다.
 
 ---
