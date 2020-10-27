@@ -176,6 +176,11 @@ Artifacts를 다운받아 압축을 풀면 결과가 *.xml 형태로 저장되�
 
 ---
 
+### 여담
+같은 원리로 Github Action을 통해 Build를 하는것도 가능하다
+
+---
+
 ### Reference
 - [Unity CI Docs](https://unity-ci.com/docs)
 - [Github - webbertakken/unity-test-runner](https://github.com/webbertakken/unity-test-runner)
