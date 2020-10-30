@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="https://mousedoc.github.io/tag/github/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://mousedoc.github.io/" rel="alternate" type="text/html" />
+  <updated>2020-10-30T06:18:45+00:00</updated>
+  <id>https://mousedoc.github.io/tag/github/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Ghost | </title>
+  
+
+  
+    <subtitle>The professional publishing platform</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Github Action으로 Unity Test Runner 돌리기</title>
+      <link href="https://mousedoc.github.io/unity-testrunner-with-github-actions" rel="alternate" type="text/html" title="Github Action으로 Unity Test Runner 돌리기" />
+      <published>2014-08-12T10:18:00+00:00</published>
+      <updated>2014-08-12T10:18:00+00:00</updated>
+      <id>https://mousedoc.github.io/unity-testrunner-with-github-actions</id>
+      <content type="html" xml:base="https://mousedoc.github.io/unity-testrunner-with-github-actions">&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\006.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+Software 개발 중, Github Action과 Unity Testrunner를 통한 Code Coverage 방법&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1-github-action-생성&quot;&gt;1. Github Action 생성&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\000.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+본인의 Unity 프로젝트 Repository의 Actinos 탭을 눌러준다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\001.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+set up a workflow yourself 를 눌러 기본 workflow를 생성.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-unity-activation-file-생성&quot;&gt;2. Unity activation file 생성&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-language-yml&quot; data-lang=&quot;language-yml&quot;&gt;name: Acquire unity activation file
+
+on:
+  push:
+    branches: [ master ]
+    
+    # Unity 버전 변경 시 아래 Job을 실행하도록 함
+    # 최초 실행 시에는 아래 조건을 제거해야 Action이 실행됩니다 
+    # paths: 
+    #   - &quot;ProjectSettings/ProjectVersion.txt&quot;
+
+env:
+  # 사용하고 있는 Unity version 
+  unityVersion: 2019.3.13f1
+
+jobs:
+  activation:
+    name: Request manual activation file 🔑
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Request manual activation file
+      - name: Request manual activation file
+        id: getManualLicenseFile
+        uses: webbertakken/unity-request-manual-activation-file@v1.1
+        with:
+          unityVersion: $
+
+      # Upload artifact
+      - name: Expose as artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: $
+          path: $&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;generate-unity-license.yml 를 생성 후 위의 내용을 붙여넣는다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;2-unity-activation-file-업로드&quot;&gt;2. Unity activation file 업로드&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\002.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+위와 같이 성공적으로 완료되었으면, 아티팩트를 다운로드 해 *.alf 파일을 &lt;a href=&quot;https://license.unity3d.com/manual&quot;&gt;여기에&lt;/a&gt; 업로드 해주고&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\003.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+*.ulf 파일을 다운로드 받으면 된다&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;3-secret-생성&quot;&gt;3. Secret 생성&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\004.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+다시 Repository로 돌아와 Settings -&amp;gt; Secrets 의 New secret을 눌러준다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\005.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+Name은 ‘UNITY_LICENSE’, Value는 *.ulf 파일을 메모장으로 열어 안의 내용을 복사해 넣어주면 된다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;4-testrunner-workflow-생성&quot;&gt;4. TestRunner workflow 생성&lt;/h3&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-language-yml&quot; data-lang=&quot;language-yml&quot;&gt;name: Run Unity Testrunner 
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+
+env:
+  UNITY_LICENSE: $
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  runUnityTestrunner:
+    
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        # Unity project가 Root가 아니면 경로 입력
+        projectPath:
+          - ./
+        # 사용중인 Unity version
+        unityVersion:
+          - 2019.3.13f1
+        testMode:
+          - playmode
+          - editmode
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+       
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      with:
+        lfs: true
+
+          
+      # Caching library folder    
+      - name: Cache Library Folder
+        uses: actions/cache@v1.1.0
+        with:
+          path: $/Library
+          key: Library-$
+          restore-keys: |
+            Library-
+            
+      # Run Unity Testrunner
+      - name : Run Unity Testrunner
+        uses: webbertakken/unity-test-runner@v1.4
+        id: tests
+        with:
+          projectPath: $
+          unityVersion: $
+          testMode: $
+          artifactsPath: $-artifacts
+      
+      # Upload result
+      - name: Upload result  
+        uses: actions/upload-artifact@v1
+        with:
+          name: Test results for $
+          path: $ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;run-unity-testrunner.yml 를 생성 후 위의 내용을 붙여넣고,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\007.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+Workflow가 잘 실행되는지 확인하면 된다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;5-result-artifacts-확인&quot;&gt;5. Result Artifacts 확인&lt;/h3&gt;
+&lt;p&gt;Unity Test Runner가 정상적으로 실행이 되었다면. 아래와 같이 결과를 확인할 수 있다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets\images-post\2020-09-20-unity-testrunner-with-github-actions\008.jpg&quot; alt=&quot;drawing&quot; style=&quot;max-width:840px;&quot; /&gt; 
+Artifacts를 다운받아 압축을 풀면 결과가 *.xml 형태로 저장되어 있다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;여담&quot;&gt;여담&lt;/h3&gt;
+&lt;p&gt;같은 원리로 Github Action을 통해 Build를 하는것도 가능하다&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unity-ci.com/docs&quot;&gt;Unity CI Docs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/webbertakken/unity-test-runner&quot;&gt;Github - webbertakken/unity-test-runner&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>이상윤</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="github" />
+      
+
+      
+        <summary type="html">Software 개발 중, Github Action과 Unity Testrunner를 통한 Code Coverage 방법</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
