@@ -3,13 +3,13 @@ name: Jekyll Deploy
 on: 
   push:
     branches: [ master ]
-    paths: 
+    #paths: 
       #- '.github/**'
       #- '**.md'
       #- 'assets/**'
       
       # Ignore
-      - '!README.md'
+      #- '!README.md'
 
 env: 
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
